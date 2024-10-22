@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.ZsjhMapper">
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Zsjh">
+    <id column="t_zsjh_id" jdbcType="INTEGER" property="tZsjhId" />
+    <result column="zydh" jdbcType="CHAR" property="zydh" />
+    <result column="kldm" jdbcType="INTEGER" property="kldm" />
+    <result column="zyjhrs" jdbcType="INTEGER" property="zyjhrs" />
+    <result column="sfdm" jdbcType="CHAR" property="sfdm" />
+    <result column="sfjhrs" jdbcType="INTEGER" property="sfjhrs" />
+    <result column="jhlbdm" jdbcType="CHAR" property="jhlbdm" />
+    <result column="year" jdbcType="CHAR" property="year" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    t_zsjh_id, zydh, kldm, zyjhrs, sfdm, sfjhrs, jhlbdm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_zsjh
+    where t_zsjh_id = #{tZsjhId,jdbcType=INTEGER}
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_zsjh
+    where t_zsjh_id = #{tZsjhId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zsjh">
+    insert into t_zsjh
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tZsjhId != null">
+        t_zsjh_id,
+      </if>
+      <if test="zydh != null">
+        zydh,
+      </if>
+      <if test="kldm != null">
+        kldm,
+      </if>
+      <if test="zyjhrs != null">
+        zyjhrs,
+      </if>
+      <if test="sfdm != null">
+        sfdm,
+      </if>
+      <if test="sfjhrs != null">
+        sfjhrs,
+      </if>
+      <if test="jhlbdm != null">
+        jhlbdm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tZsjhId != null">
+        #{tZsjhId,jdbcType=INTEGER},
+      </if>
+      <if test="zydh != null">
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="kldm != null">
+        #{kldm,jdbcType=INTEGER},
+      </if>
+      <if test="zyjhrs != null">
+        #{zyjhrs,jdbcType=INTEGER},
+      </if>
+      <if test="sfdm != null">
+        #{sfdm,jdbcType=CHAR},
+      </if>
+      <if test="sfjhrs != null">
+        #{sfjhrs,jdbcType=INTEGER},
+      </if>
+      <if test="jhlbdm != null">
+        #{jhlbdm,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zsjh">
+    update t_zsjh
+    <set>
+      <if test="zydh != null">
+        zydh = #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="kldm != null">
+        kldm = #{kldm,jdbcType=INTEGER},
+      </if>
+      <if test="zyjhrs != null">
+        zyjhrs = #{zyjhrs,jdbcType=INTEGER},
+      </if>
+      <if test="sfdm != null">
+        sfdm = #{sfdm,jdbcType=CHAR},
+      </if>
+      <if test="sfjhrs != null">
+        sfjhrs = #{sfjhrs,jdbcType=INTEGER},
+      </if>
+      <if test="jhlbdm != null">
+        jhlbdm = #{jhlbdm,jdbcType=CHAR},
+      </if>
+    </set>
+    where t_zsjh_id = #{tZsjhId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caicaigroup.hnuzslq_system.entity.Zsjh">
+    update t_zsjh
+    set zydh = #{zydh,jdbcType=CHAR},
+      kldm = #{kldm,jdbcType=INTEGER},
+      zyjhrs = #{zyjhrs,jdbcType=INTEGER},
+      sfdm = #{sfdm,jdbcType=CHAR},
+      sfjhrs = #{sfjhrs,jdbcType=INTEGER},
+      jhlbdm = #{jhlbdm,jdbcType=CHAR}
+    where t_zsjh_id = #{tZsjhId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectZsjhByQuery" parameterType="com.caicaigroup.hnuzslq_system.entity.vo.Query" resultType="com.caicaigroup.hnuzslq_system.entity.vo.ZsjhDetail">
+    select t_zsjh_id, t4.dmmc as xy, t_zydm.zydh, zymc, t1.dmmc as kl,t_zsjh.kldm, zyjhrs, sfjhrs, t_zsjh.year as nf, t_zsjh.sfdm, t_zsjh.jhlbdm
+    from t_zydm, t_zsjh, td_zdb as t1, td_zdb as t2, td_zdb as t3, td_zdb as t4
+    <where>
+    t_zydm.zydh = t_zsjh.zydh
+    and t_zydm.year = '${query.nf}'
+    and t_zsjh.sfdm = t2.dm
+    and t2.dmlb = 'sfdm'
+    and t2.dmmc in ('上海', '湖南', '甘肃')
+    and t_zsjh.kldm = t1.dm
+    and t1.dmlb = 'kldm'
+    and t1.bs = 'HD'
+    and t_zydm.yxdm = t4.dm
+    and t4.dmlb = 'yxdm'
+    and t_zsjh.jhlbdm = t3.dm
+    and t3.dmlb = 'jhlbdm'
+    and t3.dmmc = '${query.jh}'
+    and t_zsjh.year = '${query.nf}'
+      <if test="query.zy !='' and query.zy != null">
+          and t_zydm.zymc LIKE '%${query.zy}%'
+      </if>
+      <if test="query.sf !='' and query.sf != null">
+        and t2.dmmc = '${query.sf}'
+      </if>
+      <if test="query.yx !='' and query.yx != null">
+        and t4.dmmc = '${query.yx}'
+      </if>
+    </where>
+  </select>
+  <select id="selectZsjhByQueryAllJh" resultType="com.caicaigroup.hnuzslq_system.entity.vo.ZsjhDetail">
+    select t4.dmmc as xy, t_zydm.zydh, zymc, t1.dmmc as kl,t_zsjh.kldm, sum(zyjhrs) as zyjhrs, sum(sfjhrs) as sfjhrs, t_zsjh.year as nf, t_zsjh.sfdm
+    from t_zydm, t_zsjh, td_zdb as t1, td_zdb as t2, td_zdb as t4
+    <where>
+    t_zydm.zydh = t_zsjh.zydh
+    and t_zydm.year = '${query.nf}'
+    and t_zsjh.sfdm = t2.dm
+    and t2.dmlb = 'sfdm'
+    and t2.dmmc in ('上海', '湖南', '甘肃')
+    and t_zsjh.kldm = t1.dm
+    and t1.dmlb = 'kldm'
+    and t1.bs = 'HD'
+    and t_zydm.yxdm = t4.dm
+    and t4.dmlb = 'yxdm'
+    and t_zsjh.year = '${query.nf}'
+    <if test="query.zy !='' and query.zy != null">
+      and t_zydm.zymc LIKE '%${query.zy}%'
+    </if>
+    <if test="query.sf !='' and query.sf != null">
+      and t2.dmmc = '${query.sf}'
+    </if>
+    <if test="query.yx !='' and query.yx != null">
+      and t4.dmmc = '${query.yx}'
+    </if>
+    </where>
+    group by t_zsjh.jhlbdm, t4.dmmc, t_zydm.zydh, zymc, t1.dmmc,t_zsjh.kldm, t_zsjh.year , t_zsjh.sfdm
+
+  </select>
+
+</mapper>

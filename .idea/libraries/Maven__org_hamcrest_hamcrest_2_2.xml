@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.hamcrest:hamcrest:2.2">
+    <CLASSES>
+      <root url="jar://E:/DevTools/Maven/3.9.5/apache-maven-3.9.5-bin/apache-maven-3.9.5/mvn_repo/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/DevTools/Maven/3.9.5/apache-maven-3.9.5-bin/apache-maven-3.9.5/mvn_repo/org/hamcrest/hamcrest/2.2/hamcrest-2.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/DevTools/Maven/3.9.5/apache-maven-3.9.5-bin/apache-maven-3.9.5/mvn_repo/org/hamcrest/hamcrest/2.2/hamcrest-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
