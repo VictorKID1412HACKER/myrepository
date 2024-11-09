@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.GkcjxMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Gkcjx" >
+    <result column="ksh" property="ksh" jdbcType="CHAR" />
+    <result column="gkcjx01" property="gkcjx01" jdbcType="DECIMAL" />
+    <result column="gkcjx02" property="gkcjx02" jdbcType="DECIMAL" />
+    <result column="gkcjx03" property="gkcjx03" jdbcType="DECIMAL" />
+    <result column="gkcjx04" property="gkcjx04" jdbcType="DECIMAL" />
+    <result column="gkcjx05" property="gkcjx05" jdbcType="DECIMAL" />
+    <result column="gkcjx06" property="gkcjx06" jdbcType="DECIMAL" />
+    <result column="gkcjx07" property="gkcjx07" jdbcType="DECIMAL" />
+    <result column="gkcjx08" property="gkcjx08" jdbcType="DECIMAL" />
+    <result column="gkcjx09" property="gkcjx09" jdbcType="DECIMAL" />
+    <result column="gkcjx10" property="gkcjx10" jdbcType="DECIMAL" />
+    <result column="gkcjx_byzc" property="gkcjxByzc" jdbcType="DECIMAL" />
+    <result column="gkcjx_bd" property="gkcjxBd" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Gkcjx" >
+    insert into t_gkcjx (ksh, gkcjx01, gkcjx02,
+      gkcjx03, gkcjx04, gkcjx05,
+      gkcjx06, gkcjx07, gkcjx08,
+      gkcjx09, gkcjx10,gkcjx_byzc, gkcjx_bd
+      )
+    values (#{ksh,jdbcType=CHAR}, #{gkcjx01,jdbcType=DECIMAL}, #{gkcjx02,jdbcType=DECIMAL},
+      #{gkcjx03,jdbcType=DECIMAL}, #{gkcjx04,jdbcType=DECIMAL}, #{gkcjx05,jdbcType=DECIMAL},
+      #{gkcjx06,jdbcType=DECIMAL}, #{gkcjx07,jdbcType=DECIMAL}, #{gkcjx08,jdbcType=DECIMAL},
+      #{gkcjx09,jdbcType=DECIMAL}, #{gkcjx10,jdbcType=DECIMAL}, #{gkcjxByzc,jdbcType=DECIMAL},
+        #{gkcjxBd,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Gkcjx" >
+    insert into t_gkcjx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        ksh,
+      </if>
+      <if test="gkcjx01 != null" >
+        gkcjx01,
+      </if>
+      <if test="gkcjx02 != null" >
+        gkcjx02,
+      </if>
+      <if test="gkcjx03 != null" >
+        gkcjx03,
+      </if>
+      <if test="gkcjx04 != null" >
+        gkcjx04,
+      </if>
+      <if test="gkcjx05 != null" >
+        gkcjx05,
+      </if>
+      <if test="gkcjx06 != null" >
+        gkcjx06,
+      </if>
+      <if test="gkcjx07 != null" >
+        gkcjx07,
+      </if>
+      <if test="gkcjx08 != null" >
+        gkcjx08,
+      </if>
+      <if test="gkcjx09 != null" >
+        gkcjx09,
+      </if>
+      <if test="gkcjx10 != null" >
+        gkcjx10,
+      </if>
+      <if test="gkcjxByzc != null" >
+        gkcjx_byzc,
+      </if>
+      <if test="gkcjxBd != null" >
+        gkcjx_bd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        #{ksh,jdbcType=CHAR},
+      </if>
+      <if test="gkcjx01 != null" >
+        #{gkcjx01,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx02 != null" >
+        #{gkcjx02,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx03 != null" >
+        #{gkcjx03,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx04 != null" >
+        #{gkcjx04,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx05 != null" >
+        #{gkcjx05,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx06 != null" >
+        #{gkcjx06,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx07 != null" >
+        #{gkcjx07,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx08 != null" >
+        #{gkcjx08,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx09 != null" >
+        #{gkcjx09,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjx10 != null" >
+        #{gkcjx10,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjxByzc != null" >
+        #{gkcjxByzc,jdbcType=DECIMAL},
+      </if>
+      <if test="gkcjxBd != null" >
+        #{gkcjxBd,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>
