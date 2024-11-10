@@ -28,6 +28,9 @@ import WorkerPrintPaper from "@/page/worker/WorkerPrintPaper";
 import SystemInitialize from "../page/manager/SystemInitialize";
 import UploadClassBand from "../page/manager/UploadClassBand";
 import ShiftDetail from "../page/manager/ShiftDetail"
+import PublishNews from '../page/manager/news/PublishNews.vue'
+import NewsList from '../page/manager/news/NewsList.vue'
+import NewsCategory from '../page/manager/news/NewsCategory.vue'
 
 const router = new createRouter({
     history: createWebHistory(),
@@ -121,6 +124,22 @@ const router = new createRouter({
                 {
                     path:'uploadclassband',
                     component:UploadClassBand
+                }
+                ,
+                {
+                  path: 'publishnews',
+                  name: 'PublishNews',
+                  component: PublishNews
+                },
+                {
+                  path: 'newslist',
+                  name: 'NewsList',
+                  component: NewsList
+                },
+                {
+                  path: 'newscategory',
+                  name: 'NewsCategory',
+                  component: NewsCategory
                 }
             ]
 

@@ -119,6 +119,32 @@ id: 8,
  icon:"Search",
 path: '/searchplan'
   },
+  {
+    name: "新闻管理",
+    icon: "Document",
+    id: 9,
+    path: '/news',
+    children: [
+      {
+        id: 10,
+        name: '发布新闻',
+        icon: "Plus",
+        path: '/mainpage/publishnews'
+      },
+      {
+        id: 11,
+        name: '新闻列表',
+        icon: "List",
+        path: '/mainpage/newslist'
+      },
+      {
+        id: 12,
+        name: '新闻分类管理',
+        icon: "Files",
+        path: '/mainpage/newscategory'
+      }
+    ]
+  },
 ];
 const router = useRouter();
 
