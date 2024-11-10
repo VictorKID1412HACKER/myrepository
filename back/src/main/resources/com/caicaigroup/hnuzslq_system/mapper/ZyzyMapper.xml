@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.ZyzyMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Zyzy" >
+    <result column="ksh" property="ksh" jdbcType="CHAR" />
+    <result column="zydh" property="zydh" jdbcType="CHAR" />
+    <result column="zyxh" property="zyxh" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Zyzy" >
+    insert into t_zyzy (ksh, zydh, zyxh)
+    values (#{ksh,jdbcType=CHAR}, #{zydh,jdbcType=CHAR}, #{zyxh,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zyzy" >
+    insert into t_zyzy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        ksh,
+      </if>
+      <if test="zydh != null" >
+        zydh,
+      </if>
+      <if test="zyxh != null" >
+        zyxh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        #{ksh,jdbcType=CHAR},
+      </if>
+      <if test="zydh != null" >
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="zyxh != null" >
+        #{zyxh,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.FbqkMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Fbqk" >
+    <result column="zydh" property="zydh" jdbcType="CHAR" />
+    <result column="yxdm" property="yxdm" jdbcType="CHAR" />
+    <result column="bjmc" property="bjmc" jdbcType="VARCHAR" />
+    <result column="bjdh" property="bjdh" jdbcType="CHAR" />
+    <result column="xssl" property="xssl" jdbcType="INTEGER" />
+    <result column="mnum" property="mnum" jdbcType="INTEGER" />
+    <result column="fnum" property="fnum" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Fbqk" >
+    insert into t_fbqk (zydh, yxdm, bjmc, bjdh, 
+      xssl, mnum, fnum)
+    values (#{zydh,jdbcType=CHAR}, #{yxdm,jdbcType=CHAR}, #{bjmc,jdbcType=VARCHAR}, #{bjdh,jdbcType=CHAR}, 
+      #{xssl,jdbcType=INTEGER}, #{mnum,jdbcType=INTEGER}, #{fnum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Fbqk" >
+    insert into t_fbqk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zydh != null" >
+        zydh,
+      </if>
+      <if test="yxdm != null" >
+        yxdm,
+      </if>
+      <if test="bjmc != null" >
+        bjmc,
+      </if>
+      <if test="bjdh != null" >
+        bjdh,
+      </if>
+      <if test="xssl != null" >
+        xssl,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="fnum != null" >
+        fnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zydh != null" >
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="yxdm != null" >
+        #{yxdm,jdbcType=CHAR},
+      </if>
+      <if test="bjmc != null" >
+        #{bjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="bjdh != null" >
+        #{bjdh,jdbcType=CHAR},
+      </if>
+      <if test="xssl != null" >
+        #{xssl,jdbcType=INTEGER},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=INTEGER},
+      </if>
+      <if test="fnum != null" >
+        #{fnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertByAutoFb"></insert>
+
+  <select id="selectBjs" resultType="com.caicaigroup.hnuzslq_system.entity.vo.Bj">
+    select dmmc as yx,zymc as zy,bjmc, xssl, mnum, fnum
+    from t_zydm, t_fbqk left join td_zdb
+                                  on t_fbqk.yxdm = td_zdb.dm
+    where t_fbqk.zydh = t_zydm.zydh
+      and td_zdb.dmlb = 'yxdm'
+      and t_zydm.year = '2021'
+    <if test="stuQuery.yx !='' and stuQuery.yx != null">
+      and td_zdb.dmmc = '${stuQuery.yx}'
+    </if>
+    <if test="stuQuery.zy !='' and stuQuery.zy != null">
+      and zymc like '%${stuQuery.zy}%'
+    </if>
+    <if test="stuQuery.bj !='' and stuQuery.bj != null">
+      and bjdh = '${stuQuery.bj}'
+    </if>
+  </select>
+    <select id="selectBjdhListByZymc" resultType="java.lang.String">
+      select t_fbqk.bjdh
+      from t_fbqk, t_zydm
+      where t_fbqk.zydh = t_zydm.zydh
+      and t_zydm.zymc = #{zymc}
+      and t_zydm.year = "2021"
+    </select>
+</mapper>

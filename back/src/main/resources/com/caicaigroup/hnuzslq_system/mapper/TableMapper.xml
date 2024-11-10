@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.TableMapper">
+    <insert id="insertListData" useGeneratedKeys="false">
+        insert into  ${tableName} ( ${head} )
+        <foreach collection="list" separator ="UNION ALL" item="item">
+            (
+            SELECT
+            ${item}
+            FROM DUAL
+            )
+        </foreach>
+    </insert>
+    <insert id="gsTddInsertKsxx">
+        -- 甘肃 ksxx上载
+        insert into t_ksxx (ksh, zkzh, xm, csrq, xbdm, zzmmdm, mzdm, kslbdm,
+                            bylbdm, byxxdm, byxxmc, wyyzdm, bmdwdm, kstz, dqdm,
+                            zjhm, txdz, yzbm, lxdh, kstc, ksjlhcf, wyks, sxpdkhyj,
+                            kslxdm, sjr, ysjzdm, wytl, pcdm, tddwdm, jhxzdm, cj, tzcj,
+                            tdcj, zgf, lqzydm, tdyydm, zyhg, tjhg, sfdm, jhlbdm, kldm,lqsj)
+        select ksh, zkzh, xm, csny, xbdm, zzmmdm, mzdm, kslbdm, bylbdm, zxdm,
+               zxmc, wyyzdm, bmdw, kstz, dqdm, sfzh, jtdz, yzbm, lxdh, kstc,
+               ksjlhcf, wyks, zsyj, kslxdm, sjr, ysjzdm, wytl, pcdm, tddw,
+                jhxz, cj, tzcj, tdcj, zgf, lqzy, tdyydm, zyhg, tjhg,
+               -- 省份代码转换
+               (select dm from td_zdb
+                where dmmc = #{sf}
+                  and dmlb = 'sfdm'
+                  and bs = 'HD'
+                  and yxx = 1),
+               -- 计划类别代码转换
+               (select dm from td_zdb
+                      where dmmc = #{jhlb}
+                        and dmlb = 'jhlbdm'
+                        and bs = 'HD'
+                        and yxx = 1),
+                -- 科类代码转换
+                 (select dm from td_zdb
+                      where dmmc = #{kl}
+                        and dmlb = 'kldm'
+                        and bs = 'HD'
+                        and yxx = 1),
+               "2021-07-11"
+        from ${tableName};
+    </insert>
+    <insert id="gsTddInsertGkcjx">
+        insert into t_gkcjx(ksh, gkcjx01, gkcjx02, gkcjx10, gkcjx03, gkcjx_byzc, gkcjx_bd)
+        select ksh, GKCJX01, GKCJX02, GKCJX06, GKCJX07, GKCJX25, GKCJX24
+        from ${tableName};
+    </insert>
+    <insert id="gsTddInsertZyzy">
+        -- 专业志愿上载
+        insert into t_zyzy(ksh, zydh, zyxh)
+        select ksh, zydh1 as zydh, '1' from ${tableName}
+        where zydh1 is not null
+        union all
+        select ksh, zydh2 as zydh, '2'  from ${tableName}
+        where zydh2 is not null
+        union all
+        select ksh, zydh3 as zydh, '3'  from ${tableName}
+        where zydh3 is not null
+        union all
+        select ksh, zydh4 as zydh, '4'  from ${tableName}
+        where zydh4 is not null
+        union all
+        select ksh, zydh5 as zydh, '5'  from ${tableName}
+        where zydh5 is not null
+        union all
+        select ksh, zydh6 as zydh, '6'  from ${tableName}
+        where zydh6 is not null
+        order by ksh
+    </insert>
+    <insert id="hnBmkInsertKsxx">
+        insert into t_ksxx (ksh, zkzh, xm, csrq, xbdm, zzmmdm, mzdm, kslxdm, kslbdm,
+                            bylbdm, byxxdm, byxxmc, ysjzdm, wyyzdm, kstz, bmdwdm, dqdm,
+                            zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj, lxdh, sjr,
+                            kstc, ksjlhcf, sxpdkhyj, hjlbdm, hjdm, czlbdm, xkkm)
+        select ksh, zkzh, xm, csrq, xbdm, zzmmdm, mzdm, kslxdm, kslbdm, bylbdm,
+               byxxdm, byxxmc, ysjzdm, wyyzdm, kstz, bmdw, dqdm, zjlxdm, zjhm,
+               xjh,wyks, wytl, txdz, yzbm, lxsj, lxdh, sjr, kstc, ksjlhcf,
+               sxpdkhyj, hjlbdm, hjdm, czlbdm, xkkm
+        from ${tableName}
+    </insert>
+    <insert id="hnBmkInsertGkcjx">
+        insert into t_gkcjx(ksh, gkcjx01, gkcjx02, gkcjx03, gkcjx04, gkcjx05,
+                            gkcjx06, gkcjx07, gkcjx08, gkcjx09, gkcjx_byzc, gkcjx_bd)
+        select ksh, GKCJX01, GKCJX02, GKCJX03, GKCJX04, GKCJX05,
+               GKCJX06, GKCJX07, GKCJX08, GKCJX09, GKCJX34, GKCJX35
+        from ${tableName}
+    </insert>
+    <insert id="hnZykmxInsertZyzy">
+        -- 湖南专业志愿上载
+        insert into t_zyzy(ksh, zydh, zyxh)
+        select ksh, zydh, zyxh
+        from ${tableName}
+
+    </insert>
+    <insert id="shBmkInsertKsxx">
+        insert into t_ksxx(ksh, zkzh, xm, xbdm, csrq, zzmmdm, mzdm, kslxdm, kslbdm,
+                           bylbdm, byxxdm, byxxmc, ysjzdm, wyyzdm, kstz, bmdwdm, dqdm,
+                           zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj, lxdh, sjr,
+                           kstc, ksjlhcf, sxpdkhyj, hjlbdm, czlbdm, xkkm, hjdm)
+        select ksh, zkzh, xm, xbdm, csrq, zzmmdm, mzdm, kslxdm, kslbdm, bylbdm,
+               byxxdm, byxxmc, ysjzdm, wyyzdm, kstz, bmdw, dqdm, zjlxdm, zjhm, xjh,
+               wyks, wytl, txdz, yzbm, lxsj, lxdh, sjr, kstc, ksjlhcf, sxpdkhyj,
+               hjlbdm, czlbdm, xkkm, hjdm
+        from ${tableName}
+    </insert>
+    <insert id="shBmkInsertGkcjx">
+        insert into t_gkcjx(ksh, gkcjx01, gkcjx02, gkcjx03, gkcjx04,
+                            gkcjx05, gkcjx06, gkcjx07, gkcjx08, gkcjx09)
+        select ksh, GKCJX01, GKCJX02, GKCJX03, GKCJX04, GKCJX05,
+               GKCJX06, GKCJX07, GKCJX08, GKCJX09
+        from ${tableName}
+    </insert>
+    <insert id="shZykmxInsertZyzy">
+        insert into t_zyzy(ksh, zydh, zyxh)
+        select ksh, zydh, zyxh
+        from ${tableName}
+    </insert>
+    <update id="createTable" parameterType="java.lang.String">
+        ${createTableSql}
+    </update>
+    <update id="dropTempTalbe">
+        drop table if exists ${tableName}
+    </update>
+    <update id="updateGsTdd">
+        update ${tableName}
+--         批次 录取专业
+        set pcdm = (select dmmc from td_zdb
+                    where ${tableName}.pcdm = dm
+                      and dmlb = 'pcdm'
+                      and bs = 'GS'
+                      and yxx = 1),
+            lqzy = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                    where t_zydm.zydm = td_jhk_gs.zydm
+                      and t_zydm.year = '2021'
+                      and td_jhk_gs.zydh = ${tableName}.lqzy),
+            -- 专业代号部分
+            ${tableName}.zydh1 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh1),
+            ${tableName}.zydh2 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh2),
+            ${tableName}.zydh3 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh3),
+            ${tableName}.zydh4 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh4),
+            ${tableName}.zydh5 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh5),
+            ${tableName}.zydh6 = (select t_zydm.zydh from t_zydm, td_jhk_gs
+                           where t_zydm.zydm = td_jhk_gs.zydm
+                             and t_zydm.year = '2021'
+                             and td_jhk_gs.zydh = ${tableName}.zydh6)
+    </update>
+    <update id="truncateTable">
+        TRUNCATE TABLE ${tableName}
+    </update>
+    <update id="updateHnTdd">
+        update ${tableName}
+        -- 专业志愿
+        set lqzy = (select zydh from td_zydh_hn
+                    where ${tableName}.lqzy = zydm
+                      and ${tableName}.kldm = td_zydh_hn.kldm
+                      and td_zydh_hn.yxx = 1),
+            pcdm = (select dmmc from td_zdb
+                    where ${tableName}.pcdm = dm
+                        and dmlb = 'pcdm'
+                        and bs = 'HN'
+                        and yxx = 1)
+
+--             jhlbdm = (select dmmc from td_jhlbdm_hn
+--                       where ${tableName}.jhlbdm = dm
+--                         and (${tableName}.kldm = td_jhlbdm_hn.kldm or ISNULL(td_jhlbdm_hn.kldm))
+--                         and td_jhlbdm_hn.yxx = 1)
+    </update>
+    <update id="hnTddInsertKsxx">
+        update t_ksxx,${tableName}
+        set t_ksxx.tddwdm = ${tableName}.tddwdm,
+            t_ksxx.pcdm = ${tableName}.pcdm,
+            t_ksxx.jhxzdm = ${tableName}.jhxzdm,
+            t_ksxx.tdlxdm = ${tableName}.tdlxdm,
+            t_ksxx.cj = ${tableName}.cj,
+            t_ksxx.tzcj = ${tableName}.tzcj,
+            t_ksxx.tdcj = ${tableName}.tdcj,
+            t_ksxx.zgf = ${tableName}.zgf,
+            t_ksxx.lqzydm = ${tableName}.lqzy,
+            t_ksxx.lqsj = ${tableName}.lqsj,
+            t_ksxx.lqlxdm = ${tableName}.lqlxdm,
+            t_ksxx.tdyydm = ${tableName}.tdyydm,
+            t_ksxx.zyhg = ${tableName}.zyhg,
+            t_ksxx.tjhg = ${tableName}.tjhg,
+            t_ksxx.xkkmhg = ${tableName}.xkkmhg,
+            t_ksxx.lqxh = ${tableName}.lqxh,
+            t_ksxx.tddbh = ${tableName}.tddbh,
+          -- 省份代码转换
+            t_ksxx.sfdm= (select dm from td_zdb
+                            where dmmc = #{sf}
+                            and dmlb = 'sfdm'
+                            and bs = 'HD'
+                            and yxx = 1),
+            -- 计划类别代码转换
+            t_ksxx.jhlbdm = (select dm from td_zdb
+                                where dmmc = #{jhlb}
+                                and dmlb = 'jhlbdm'
+                                and bs = 'HD'
+                                and yxx = 1),
+            -- 科类代码转换
+            t_ksxx.kldm = (select dm from td_zdb
+                                where dmmc = #{kl}
+                                and dmlb = 'kldm'
+                                and bs = 'HD'
+                                and yxx = 1)
+        where t_ksxx.ksh = ${tableName}.ksh
+    </update>
+    <update id="updateHnZykmx">
+        -- 湖南专业志愿 专业代号转换
+        update ${tableName}
+        set zydh = (select zydh from td_zydh_hn
+                    where ${tableName}.zydh = zydm
+                      and ${tableName}.kldm = td_zydh_hn.kldm
+                      and td_zydh_hn.yxx = 1)
+
+    </update>
+    <update id="updateShTdd">
+        -- 上海代码转换
+        update ${tableName}
+        set  pcdm = (select dmmc from td_zdb
+                    where ${tableName}.pcdm = dm
+                      and dmlb = 'pcdm'
+                      and bs = 'SH'
+                      and yxx = 1),
+            lqzy = (select dmmc from td_zdb
+                    where ${tableName}.lqzy = dm
+                      and dmlb = 'zydhdm'
+                      and bs = 'SH'
+                      and yxx = 1)
+    </update>
+    <update id="shTddInsertKsxx">
+        update t_ksxx,${tableName}
+        set t_ksxx.tddwdm = ${tableName}.tddwdm,
+            t_ksxx.pcdm = ${tableName}.pcdm,
+            t_ksxx.jhxzdm = ${tableName}.jhxzdm,
+            t_ksxx.tdlxdm = ${tableName}.tdlxdm,
+            t_ksxx.cj = ${tableName}.cj,
+            t_ksxx.tzcj = ${tableName}.tzcj,
+            t_ksxx.tdcj = ${tableName}.tdcj,
+            t_ksxx.zgf = ${tableName}.zgf,
+            t_ksxx.lqzydm = ${tableName}.lqzy,
+            t_ksxx.lqsj = ${tableName}.lqsj,
+            t_ksxx.lqlxdm = ${tableName}.lqlxdm,
+            t_ksxx.tdyydm = ${tableName}.tdyydm,
+            t_ksxx.zyhg = ${tableName}.zyhg,
+            t_ksxx.tjhg = ${tableName}.tjhg,
+            t_ksxx.xkkmhg = ${tableName}.xkkmhg,
+            t_ksxx.lqxh = ${tableName}.lqxh,
+            t_ksxx.tddbh = ${tableName}.tddbh,
+            -- 省份代码转换
+            t_ksxx.sfdm= (select dm from td_zdb
+            where dmmc = #{sf}
+            and dmlb = 'sfdm'
+            and bs = 'HD'
+            and yxx = 1),
+            -- 计划类别代码转换
+            t_ksxx.jhlbdm = (select dm from td_zdb
+            where dmmc = #{jhlb}
+            and dmlb = 'jhlbdm'
+            and bs = 'HD'
+            and yxx = 1),
+            -- 科类代码转换
+            t_ksxx.kldm = (select dm from td_zdb
+            where dmmc = #{kl}
+            and dmlb = 'kldm'
+            and bs = 'HD'
+            and yxx = 1)
+        where t_ksxx.ksh = ${tableName}.ksh
+    </update>
+    <update id="updateShZykmx">
+        update ${tableName}
+        set zydh = (select dmmc from td_zdb
+                    where ${tableName}.zydh = dm
+                      and dmlb = 'zydhdm'
+                      and bs = 'SH'
+                      and yxx = 1)
+    </update>
+    <select id="CheckKsxxCN" resultType="com.caicaigroup.hnuzslq_system.entity.Ksxx">
+        select ksh, zkzh, xm, t1.dmmc as xbdm, csrq, t2.dmmc as zzmmdm, t3.dmmc as mzdm, t4.dmmc as sfdm,
+               t5.dmmc as kslxdm, t6.dmmc as kslbdm, t7.dmmc as bylbdm, byxxdm, byxxmc, ysjzdm, t8.dmmc as wyyzdm,
+               kstz, bmdwdm, t9.dmmc as dqdm, t10.dmmc as zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj,
+               lxdh, sjr, kstc, ksjlhcf, sxpdkhyj, t11.dmmc as hjlbdm, hjdm, czlbdm, xkkm, tddwdm, t11.dmmc as hjlbdm,
+               hjdm, czlbdm, xkkm, tddwdm, t12.dmmc as pcdm, t13.dmmc as kldm, jhxzdm, t14.dmmc as jhlbdm,
+               tdlxdm, cj, tzcj, tdcj, zgf, t15.zymc as lqzydm, lqsj, lqlxdm, tdyydm, zyhg, tjhg, xkkmhg,
+               lqxh, tddbh, bjdh, xh
+        from t_ksxx t
+                 left join td_zdb t1 ON t.xbdm = t1.dm and t1.dmlb = 'xbdm' and t1.bs = 'HD' and t1.yxx = 1
+                 left join td_zdb t2 ON t.zzmmdm = t2.dm and t2.dmlb = 'zzmmdm' and t2.bs = 'HD' and t2.yxx = 1
+                 left join td_zdb t3 on t.mzdm = t3.dm and t3.dmlb = 'mzdm' and t3.bs = 'HD' and t3.yxx = 1
+                 left join td_zdb t4 on t.sfdm = t4.dm and t4.dmlb = 'sfdm' and t4.bs = 'HD' and t4.yxx = 1
+                 left join td_zdb t5 on t.kslxdm = t5.dm and t5.dmlb = 'kslxdm' and t5.bs = 'HD' and t5.yxx = 1
+                 left join td_zdb t6 ON t.kslbdm = t6.dm and t6.dmlb = 'kslbdm' and t6.bs = 'HD' and t6.yxx = 1
+                 left join td_zdb t7 ON t.bylbdm = t7.dm and t7.dmlb = 'bylbdm' and t7.bs = 'HD' and t7.yxx = 1
+                 left join td_zdb t8 ON t.wyyzdm = t8.dm and t8.dmlb = 'wyyzdm' and t8.bs = 'HD' and t8.yxx = 1
+                 left join td_zdb t9 ON t.dqdm = t9.dm and t9.dmlb = 'dqdm' and t9.bs = 'HD' and t9.yxx = 1
+                 left join td_zdb t10 ON t.zjlxdm = t10.dm and t10.dmlb = 'zjlxdm' and t10.bs = 'HD' and t10.yxx = 1
+                 left join td_zdb t11 ON t.hjlbdm = t11.dm and t11.dmlb = 'hjlbdm' and t11.bs = 'HD' and t11.yxx = 1
+                 left join td_zdb t12 ON t.pcdm = t12.dm and t12.dmlb = 'pcdm' and t12.bs = 'HD' and t12.yxx = 1
+                 left join td_zdb t13 ON t.kldm = t13.dm and t13.dmlb = 'kldm' and t13.bs = 'HD' and t13.yxx = 1
+                 left join td_zdb t14 ON t.jhlbdm = t14.dm and t14.dmlb = 'jhlbdm' and t14.bs = 'HD' and t14.yxx = 1
+                 left join t_zydm t15 ON t.lqzydm = t15.zydh and t15.year = '2021'
+        where t.sfdm=(select dm from td_zdb
+                      where dmmc = #{sf}
+                        and dmlb = 'sfdm'
+                        and bs = 'HD'
+                        and yxx = 1)
+          and t.jhlbdm= (select dm from td_zdb
+                         where dmmc = #{jhlb}
+                           and dmlb = 'jhlbdm'
+                           and bs = 'HD'
+                           and yxx = 1)
+          and t.kldm=(select dm from td_zdb
+                       where dmmc = #{kl}
+                         and dmlb = 'kldm'
+                         and bs = 'HD'
+                         and yxx = 1)
+        group by lqzydm, ksh
+    </select>
+</mapper>

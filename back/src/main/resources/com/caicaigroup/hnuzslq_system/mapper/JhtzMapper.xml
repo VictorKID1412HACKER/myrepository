@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.JhtzMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Jhtz" >
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="zydh" property="zydh" jdbcType="CHAR" />
+    <result column="czsj" property="czsj" jdbcType="TIMESTAMP" />
+    <result column="sfmc" property="sfmc" jdbcType="VARCHAR" />
+    <result column="zjrs" property="zjrs" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Jhtz" >
+    insert into t_jhtz (user_id, zydh, czsj, 
+      sfmc, zjrs)
+    values (#{userId,jdbcType=CHAR}, #{zydh,jdbcType=CHAR}, #{czsj,jdbcType=TIMESTAMP}, 
+      #{sfmc,jdbcType=VARCHAR}, #{zjrs,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Jhtz" >
+    insert into t_jhtz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="zydh != null" >
+        zydh,
+      </if>
+      <if test="czsj != null" >
+        czsj,
+      </if>
+      <if test="sfmc != null" >
+        sfmc,
+      </if>
+      <if test="zjrs != null" >
+        zjrs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="zydh != null" >
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="czsj != null" >
+        #{czsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sfmc != null" >
+        #{sfmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zjrs != null" >
+        #{zjrs,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

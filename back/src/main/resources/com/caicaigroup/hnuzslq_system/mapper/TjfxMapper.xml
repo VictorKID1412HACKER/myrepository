@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.TjfxMapper">
+
+    <select id="firstEnrollBySf" resultType="java.util.Map">
+        select dmmc as sf, zymc as zy, count(*) as firstZyEnrollNum
+        from t_zyzy
+                 left join t_zydm on t_zydm.zydh = t_zyzy.zydh and year = '2021'
+                 left join t_ksxx on t_zyzy.ksh = t_ksxx.ksh
+                 left join td_zdb on t_ksxx.sfdm = dm and dmlb = 'sfdm' and yxx = 1
+        where t_zyzy.zyxh = '1'
+        group by sfdm, zymc
+    </select>
+    <select id="zyAdmitNumBySf" resultType="java.util.Map">
+        select dmmc as sf, zymc as zy, count(*) as zyAdmitNum
+        from t_ksxx
+                 left join t_zydm on t_ksxx.lqzydm = t_zydm.zydh and year = '2021'
+                 left join td_zdb on t_ksxx.sfdm = dm and dmlb = 'sfdm' and yxx = 1
+        group by sfdm, zymc
+    </select>
+    <select id="firstEnrollByYx" resultType="java.util.Map">
+        select dmmc as yx, count(*) as firstZyEnrollNum
+        from t_zyzy
+                 left join t_ksxx on t_ksxx.ksh = t_zyzy.ksh
+                 left join t_zydm on t_zyzy.zydh = t_zydm.zydh and year = '2021'
+                 left join td_zdb on t_zydm.yxdm = dm and dmlb = 'yxdm' and yxx = 1
+        where t_ksxx.lqzydm = t_zyzy.zydh
+          and t_zyzy.zyxh = '1'
+        group by dmmc
+    </select>
+    <select id="zyAdmitNumByYx" resultType="java.util.Map">
+        select dmmc as yx, count(*) as yxAdmitNum
+        from t_ksxx
+                 left join t_zydm on t_ksxx.lqzydm = t_zydm.zydh and year = '2021'
+                 left join td_zdb on t_zydm.yxdm = dm and dmlb = 'yxdm' and yxx = 1
+        group by dmmc
+    </select>
+    <select id="enrollBySf" resultType="java.util.Map">
+        select dmmc as sf, zymc as zy, count(*) as fillInNum
+        from t_zyzy
+                 left join t_zydm on t_zydm.zydh = t_zyzy.zydh and year = '2021'
+                 left join t_ksxx on t_zyzy.ksh = t_ksxx.ksh
+                 left join td_zdb on t_ksxx.sfdm = dm and dmlb = 'sfdm' and yxx = 1
+        group by sfdm, zymc
+    </select>
+</mapper>
