@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--    指定连接数据库的JDBC驱动包所在位置 指定到你本机的完成路径-->
+    <classPathEntry location="C:\Users\64132\.m2\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar"/>
+    <context id="tables" targetRuntime="MyBatis3">
+
+        <!--配置连接数据库的信息-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.96.186.9:3306/hnuzslq_system?nullCatalogMeansCurrent=true"
+                        userId="HNUZSLQ_System"
+                        password="Caicai2003">
+        </jdbcConnection>
+        <!--        自动根据数据库表生成pojo实体类-->
+        <javaModelGenerator targetPackage="com.caicaigroup.hnuzslq_system.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+        <!--        自动生成mybatis的mapper.xml文件-->
+        <sqlMapGenerator targetPackage="com.caicaigroup.hnuzslq_system.mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!--        生成mybatis的mapper接口类文件-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.caicaigroup.hnuzslq_system.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!--数据库中有多少张表就需要指定多少个table的信息-->
+        <!--        tableName>表名对应domainObjectName对应的实体类的名字-->
+<!--        <table tableName="t_zsjh" domainObjectName="Zsjh"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="td_zdb" domainObjectName="Zd"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="t_fbpz" domainObjectName="Fbpz"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="t_fbqk" domainObjectName="Fbqk"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+        <table tableName="t_gkcjx" domainObjectName="Gkcjx"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+<!--        <table tableName="t_jhtz" domainObjectName="Jhtz"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="t_ksxx" domainObjectName="Ksxx"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="t_lqfb" domainObjectName="Lqfb"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="t_zyzy" domainObjectName="Zyzy"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+
+
+<!--        <table tableName="t_user" domainObjectName="User"-->
+<!--                       enableCountByExample="false"-->
+<!--                       enableUpdateByExample="false"-->
+<!--                       enableDeleteByExample="false"-->
+<!--                       enableSelectByExample="false"-->
+<!--                       selectByExampleQueryId="false"/>-->
+
+    </context>
+</generatorConfiguration>

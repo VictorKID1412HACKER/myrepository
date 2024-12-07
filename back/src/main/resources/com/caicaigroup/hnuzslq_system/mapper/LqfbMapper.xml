@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.LqfbMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Lqfb" >
+    <result column="ksh" property="ksh" jdbcType="CHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="sfz6" property="sfz6" jdbcType="CHAR" />
+    <result column="yxmc" property="yxmc" jdbcType="VARCHAR" />
+    <result column="zymc" property="zymc" jdbcType="VARCHAR" />
+    <result column="emsbdh" property="emsbdh" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Lqfb" >
+    insert into t_lqfb (ksh, xm, sfz6, yxmc,
+      zymc, emsbdh)
+    values (#{ksh,jdbcType=CHAR}, #{xm,jdbcType=VARCHAR}, #{sfz6,jdbcType=CHAR}, #{yxmc,jdbcType=VARCHAR},
+      #{zymc,jdbcType=VARCHAR}, #{emsbdh,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Lqfb" >
+    insert into t_lqfb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        ksh,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="sfz6 != null" >
+        sfz6,
+      </if>
+      <if test="yxmc != null" >
+        yxmc,
+      </if>
+      <if test="zymc != null" >
+        zymc,
+      </if>
+      <if test="emsbdh != null" >
+        emsbdh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        #{ksh,jdbcType=CHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfz6 != null" >
+        #{sfz6,jdbcType=CHAR},
+      </if>
+      <if test="yxmc != null" >
+        #{yxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zymc != null" >
+        #{zymc,jdbcType=VARCHAR},
+      </if>
+      <if test="emsbdh != null" >
+        #{emsbdh,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

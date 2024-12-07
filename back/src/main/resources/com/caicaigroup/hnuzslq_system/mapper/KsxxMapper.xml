@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.KsxxMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Ksxx" >
+    <id column="ksh" property="ksh" jdbcType="CHAR" />
+    <result column="zkzh" property="zkzh" jdbcType="CHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="xbdm" property="xbdm" jdbcType="CHAR" />
+    <result column="csrq" property="csrq" jdbcType="DATE" />
+    <result column="zzmmdm" property="zzmmdm" jdbcType="CHAR" />
+    <result column="mzdm" property="mzdm" jdbcType="CHAR" />
+    <result column="kslxdm" property="kslxdm" jdbcType="CHAR" />
+    <result column="kslbdm" property="kslbdm" jdbcType="CHAR" />
+    <result column="bylbdm" property="bylbdm" jdbcType="CHAR" />
+    <result column="byxxdm" property="byxxdm" jdbcType="CHAR" />
+    <result column="byxxmc" property="byxxmc" jdbcType="VARCHAR" />
+    <result column="ysjzdm" property="ysjzdm" jdbcType="CHAR" />
+    <result column="wyyzdm" property="wyyzdm" jdbcType="CHAR" />
+    <result column="kstz" property="kstz" jdbcType="CHAR" />
+    <result column="bmdwdm" property="bmdwdm" jdbcType="CHAR" />
+    <result column="dqdm" property="dqdm" jdbcType="CHAR" />
+    <result column="zjlxdm" property="zjlxdm" jdbcType="CHAR" />
+    <result column="zjhm" property="zjhm" jdbcType="CHAR" />
+    <result column="xjh" property="xjh" jdbcType="CHAR" />
+    <result column="wyks" property="wyks" jdbcType="INTEGER" />
+    <result column="wytl" property="wytl" jdbcType="CHAR" />
+    <result column="txdz" property="txdz" jdbcType="VARCHAR" />
+    <result column="yzbm" property="yzbm" jdbcType="CHAR" />
+    <result column="lxsj" property="lxsj" jdbcType="CHAR" />
+    <result column="lxdh" property="lxdh" jdbcType="VARCHAR" />
+    <result column="sjr" property="sjr" jdbcType="VARCHAR" />
+    <result column="kstc" property="kstc" jdbcType="VARCHAR" />
+    <result column="ksjlhcf" property="ksjlhcf" jdbcType="VARCHAR" />
+    <result column="sxpdkhyj" property="sxpdkhyj" jdbcType="VARCHAR" />
+    <result column="hjlbdm" property="hjlbdm" jdbcType="CHAR" />
+    <result column="hjdm" property="hjdm" jdbcType="VARCHAR" />
+    <result column="czlbdm" property="czlbdm" jdbcType="CHAR" />
+    <result column="xkkm" property="xkkm" jdbcType="VARCHAR" />
+    <result column="tddwdm" property="tddwdm" jdbcType="VARCHAR" />
+    <result column="pcdm" property="pcdm" jdbcType="CHAR" />
+    <result column="kldm" property="kldm" jdbcType="CHAR" />
+    <result column="jhxzdm" property="jhxzdm" jdbcType="INTEGER" />
+    <result column="jhlbdm" property="jhlbdm" jdbcType="CHAR" />
+    <result column="tdlxdm" property="tdlxdm" jdbcType="INTEGER" />
+    <result column="cj" property="cj" jdbcType="DECIMAL" />
+    <result column="tzcj" property="tzcj" jdbcType="DECIMAL" />
+    <result column="tdcj" property="tdcj" jdbcType="DECIMAL" />
+    <result column="zgf" property="zgf" jdbcType="DECIMAL" />
+    <result column="lqzydm" property="lqzydm" jdbcType="CHAR" />
+    <result column="lqsj" property="lqsj" jdbcType="DATE" />
+    <result column="lqlxdm" property="lqlxdm" jdbcType="VARCHAR" />
+    <result column="tdyydm" property="tdyydm" jdbcType="CHAR" />
+    <result column="zyhg" property="zyhg" jdbcType="BIT" />
+    <result column="tjhg" property="tjhg" jdbcType="BIT" />
+    <result column="xkkmhg" property="xkkmhg" jdbcType="BIT" />
+    <result column="lqxh" property="lqxh" jdbcType="DECIMAL" />
+    <result column="tddbh" property="tddbh" jdbcType="DECIMAL" />
+    <result column="bjdh" property="bjdh" jdbcType="CHAR" />
+    <result column="xh" property="xh" jdbcType="CHAR" />
+    <result column="sfdm" property="sfdm" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.caicaigroup.hnuzslq_system.entity.KsxxWithBLOBs" extends="BaseResultMap" >
+    <result column="kszp" property="kszp" jdbcType="LONGVARBINARY" />
+    <result column="dazp1" property="dazp1" jdbcType="LONGVARBINARY" />
+    <result column="dazp2" property="dazp2" jdbcType="LONGVARBINARY" />
+    <result column="dazp3" property="dazp3" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ksh, zkzh, xm, xbdm, csrq, zzmmdm, mzdm, kslxdm, kslbdm, bylbdm, byxxdm, byxxmc, 
+    ysjzdm, wyyzdm, kstz, bmdwdm, dqdm, zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj, 
+    lxdh, sjr, kstc, ksjlhcf, sxpdkhyj, hjlbdm, hjdm, czlbdm, xkkm, tddwdm, pcdm, kldm, 
+    jhxzdm, jhlbdm, tdlxdm, cj, tzcj, tdcj, zgf, lqzydm, lqsj, lqlxdm, tdyydm, zyhg, 
+    tjhg, xkkmhg, lqxh, tddbh, bjdh, xh
+  </sql>
+  <sql id="Blob_Column_List" >
+    kszp, dazp1, dazp2, dazp3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_ksxx
+    where ksh = #{ksh,jdbcType=CHAR}
+  </select>
+  <select id="selectKsByFb" resultType="com.caicaigroup.hnuzslq_system.entity.vo.KsFb" parameterType="com.caicaigroup.hnuzslq_system.entity.vo.Query">
+    select zd1.dmmc as xy, zd2.dmmc as zy, t_ksxx.bjmc as bj,t_ksxx.xh as xh, t_ksxx.xm as xm, t_ksxx.xm as lxfs, t_ksxx.txdz as txdz, t_ksxx.csrq as csrq, t_ksxx.kszp as photo
+    from t_ksxx,
+    left join td_zdb zd1
+    on t_ksxx.yxdm = zd1.dm
+    left join td_zdb zd2
+    on t_ksxx.lqzydm = zd2.dm
+    where  like #{query.jh}
+  </select>
+  <select id="selectDetail" parameterType="com.caicaigroup.hnuzslq_system.entity.vo.StuQuery" resultType="com.caicaigroup.hnuzslq_system.entity.vo.KsFb">
+    select t2.dmmc as xy, ksh, zymc as zy,
+    concat(bjmcqz, t_ksxx.bjdh) as bj,
+    xm, t3.dmmc as xb, xh, kslbdm, t4.dmmc as kl, zjhm, lxdh, txdz, csrq, t6.dmmc as sf, cj, t5.dmmc as jh,kszp
+    from t_ksxx, t_fbpz, t_zydm, td_zdb as t2, td_zdb as t3, td_zdb as t4, td_zdb as t5, td_zdb as t6
+    where t_ksxx.lqzydm = t_zydm.zydh
+    and t_zydm.year = '${stuQuery.nf}'
+    and t_zydm.year = year(lqsj)
+
+    and t_zydm.yxdm = t2.dm
+    and t2.dmlb = 'yxdm'
+    and t2.bs = 'HD'
+
+    and t_zydm.zydh = t_fbpz.zydh
+    and t_ksxx.xbdm = t3.dm
+    and t3.dmlb = 'xbdm'
+    and t_ksxx.kldm = t4.dm
+    and t4.dmlb = 'kldm'
+    and t4.bs = 'HD'
+    and t4.yxx = 1
+    and t5.dmlb = 'jhlbdm'
+    and t5.dm = t_ksxx.jhlbdm
+    and t5.bs = 'HD'
+    and t5.yxx = 1
+    and t_ksxx.sfdm = t6.dm
+    and t6.dmlb = 'sfdm'
+    <if test="stuQuery.nf !='' and stuQuery.nf != null">
+      and year(lqsj) = '${stuQuery.nf}'
+    </if>
+    <if test="stuQuery.jh !='' and stuQuery.jh != null">
+      and t5.dmmc = '${stuQuery.jh}'
+    </if>
+    <if test="stuQuery.zy !='' and stuQuery.zy != null">
+      and zymc like '%${stuQuery.zy}%'
+    </if>
+    <if test="stuQuery.zjhm !='' and stuQuery.zjhm != null">
+      and substring(zjhm, 13, 6) = '${stuQuery.zjhm}'
+    </if>
+    <if test="stuQuery.sf !='' and stuQuery.sf != null">
+      and t6.dmmc = '${stuQuery.sf}'
+    </if>
+    <if test="stuQuery.xm !='' and stuQuery.xm != null">
+      and xm like '%${stuQuery.xm}%'
+    </if>
+    <if test="stuQuery.ksh !='' and stuQuery.ksh != null">
+      and ksh = '${stuQuery.ksh}'
+    </if>
+    <if test="stuQuery.bj !='' and stuQuery.bj != null">
+      and bjdh = '${stuQuery.bj}'
+    </if>
+    <if test="stuQuery.yx !='' and stuQuery.yx != null">
+      and t2.dmmc = '${stuQuery.yx}'
+    </if>
+  </select>
+  <select id="selectListByLqzy" resultType="com.caicaigroup.hnuzslq_system.entity.Ksxx">
+    select t_ksxx.*
+    from t_ksxx as ks, td_zdb as zd
+          where zd.dmmc = #{zydh}
+            and lqzydm = zd.dm
+            and zd.dmlb = 'zydhdm'
+  </select>
+  <select id="selectLqfsx" resultType="com.caicaigroup.hnuzslq_system.entity.vo.Lqfsx">
+    select  zymc,t2.dmmc as jhlb,t1.dmmc as kl,count(cj) as num, max(cj) as maxS, min(cj) as minS, sum(cj)/count(*) as avgS
+    from t_ksxx,t_zydm,td_zdb t1,td_zdb t2,td_zdb t3
+    where
+          t_ksxx.lqzydm = t_zydm.zydh
+        and t_zydm.year = '${query.nf}'
+        and year(lqsj) = '${query.nf}'
+      and t_ksxx.kldm = t1.dm
+      and t1.dmlb = 'kldm'
+      and t1.bs = 'HD'
+      and t1.yxx = 1
+      and t2.dmlb = 'jhlbdm'
+      and t2.dm = t_ksxx.jhlbdm
+      and t2.bs = 'HD'
+      and t2.yxx = 1
+      and t_ksxx.sfdm = t3.dm
+      and t3.dmlb = 'sfdm'
+      and t3.dmmc = '${query.sf}'
+      and t3.yxx = 1
+    group by lqzydm,jhlbdm,kldm
+  </select>
+
+  <select id="selectksxxCN" resultType="com.caicaigroup.hnuzslq_system.entity.Ksxx">
+    select ksh, zkzh, xm, t1.dmmc as xbdm, csrq, t2.dmmc as zzmmdm, t3.dmmc as mzdm, t4.dmmc as sfdm,
+           t5.dmmc as kslxdm, t6.dmmc as kslbdm, t7.dmmc as bylbdm, byxxdm, byxxmc, ysjzdm, t8.dmmc as wyyzdm,
+           kstz, bmdwdm, t9.dmmc as dqdm, t10.dmmc as zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj,
+           lxdh, sjr, kstc, ksjlhcf, sxpdkhyj, t11.dmmc as hjlbdm, hjdm, czlbdm, xkkm, tddwdm, t11.dmmc as hjlbdm,
+           hjdm, czlbdm, xkkm, tddwdm, t12.dmmc as pcdm, t13.dmmc as kldm, jhxzdm, t14.dmmc as jhlbdm,
+           tdlxdm, cj, tzcj, tdcj, zgf, t15.zymc as lqzydm, lqsj, lqlxdm, tdyydm, zyhg, tjhg, xkkmhg,
+           lqxh, tddbh, bjdh, xh
+    from t_ksxx t
+           left join td_zdb t1 ON t.xbdm = t1.dm and t1.dmlb = 'xbdm' and t1.bs = 'HD' and t1.yxx = 1
+           left join td_zdb t2 ON t.zzmmdm = t2.dm and t2.dmlb = 'zzmmdm' and t2.bs = 'HD' and t2.yxx = 1
+           left join td_zdb t3 on t.mzdm = t3.dm and t3.dmlb = 'mzdm' and t3.bs = 'HD' and t3.yxx = 1
+           left join td_zdb t4 on t.sfdm = t4.dm and t4.dmlb = 'sfdm' and t4.bs = 'HD' and t4.yxx = 1
+           left join td_zdb t5 on t.kslxdm = t5.dm and t5.dmlb = 'kslxdm' and t5.bs = 'HD' and t5.yxx = 1
+           left join td_zdb t6 ON t.kslbdm = t6.dm and t6.dmlb = 'kslbdm' and t6.bs = 'HD' and t6.yxx = 1
+           left join td_zdb t7 ON t.bylbdm = t7.dm and t7.dmlb = 'bylbdm' and t7.bs = 'HD' and t7.yxx = 1
+           left join td_zdb t8 ON t.wyyzdm = t8.dm and t8.dmlb = 'wyyzdm' and t8.bs = 'HD' and t8.yxx = 1
+           left join td_zdb t9 ON t.dqdm = t9.dm and t9.dmlb = 'dqdm' and t9.bs = 'HD' and t9.yxx = 1
+           left join td_zdb t10 ON t.zjlxdm = t10.dm and t10.dmlb = 'zjlxdm' and t10.bs = 'HD' and t10.yxx = 1
+           left join td_zdb t11 ON t.hjlbdm = t11.dm and t11.dmlb = 'hjlbdm' and t11.bs = 'HD' and t11.yxx = 1
+           left join td_zdb t12 ON t.pcdm = t12.dm and t12.dmlb = 'pcdm' and t12.bs = 'HD' and t12.yxx = 1
+           left join td_zdb t13 ON t.kldm = t13.dm and t13.dmlb = 'kldm' and t13.bs = 'HD' and t13.yxx = 1
+           left join td_zdb t14 ON t.jhlbdm = t14.dm and t14.dmlb = 'jhlbdm' and t14.bs = 'HD' and t14.yxx = 1
+           left join t_zydm t15 ON t.lqzydm = t15.zydh and t15.year = '2021'
+    group by lqzydm, ksh
+  </select>
+  <select id="selectCountZyCN" resultType="java.util.Map">
+    select zymc, count(*) as count
+    from t_ksxx left join t_zydm on lqzydm = zydh and year = '2021'
+    group by lqzydm
+    order by lqzydm
+  </select>
+
+  <select id="selectBySfdm" resultType="java.lang.Integer">
+    select count(*) as num
+    from t_ksxx,td_zdb t
+    where t_ksxx.sfdm=t.dm
+      and t.dmlb='sfdm'
+      and t.dmmc=#{sf}
+      and t.yxx=1
+  </select>
+  <select id="selectByKshKszp">
+    select kszp
+    from t_ksxx
+    where ksh=#{ksh,jdbcType=CHAR}
+  </select>
+    <select id="selectKsZp" resultType="java.util.Map">
+      select ksh, zymc, bjdh, xh, kszp, dmmc as yxmc
+      from t_ksxx
+      left join t_zydm on lqzydm = zydh and year = '2021'
+      left join td_zdb on yxdm = dm and dmlb = 'yxdm' and yxx = '1'
+      order by lqzydm, bjdh, xh
+    </select>
+  <select id="selectdazp" resultType="java.util.Map">
+    select ksh, zymc, bjdh, xh, dazp1, dazp2, dazp3, dmmc as yxmc
+    from t_ksxx
+    left join t_zydm on lqzydm = zydh and year = '2021'
+    left join td_zdb on yxdm = dm and dmlb = 'yxdm' and yxx = '1'
+    order by lqzydm, bjdh, xh
+  </select>
+  <select id="selectByKsh" resultType="com.caicaigroup.hnuzslq_system.entity.Ksxx">
+    select ksh, zkzh, xm, t1.dmmc as xbdm, csrq, t2.dmmc as zzmmdm, t3.dmmc as mzdm, t4.dmmc as sfdm,
+           t5.dmmc as kslxdm, t6.dmmc as kslbdm, t7.dmmc as bylbdm, byxxdm, byxxmc, ysjzdm, t8.dmmc as wyyzdm,
+           kstz, bmdwdm, t9.dmmc as dqdm, t10.dmmc as zjlxdm, zjhm, xjh, wyks, wytl, txdz, yzbm, lxsj,
+           lxdh, sjr, kstc, ksjlhcf, sxpdkhyj, t11.dmmc as hjlbdm, hjdm, czlbdm, xkkm, tddwdm, t11.dmmc as hjlbdm,
+           hjdm, czlbdm, xkkm, tddwdm, t12.dmmc as pcdm, t13.dmmc as kldm, jhxzdm, t14.dmmc as jhlbdm,
+           tdlxdm, cj, tzcj, tdcj, zgf, t15.zymc as lqzydm, lqsj, lqlxdm, tdyydm, zyhg, tjhg, xkkmhg,
+           lqxh, tddbh, bjdh, xh
+    from t_ksxx t
+           left join td_zdb t1 ON t.xbdm = t1.dm and t1.dmlb = 'xbdm' and t1.bs = 'HD' and t1.yxx = 1
+           left join td_zdb t2 ON t.zzmmdm = t2.dm and t2.dmlb = 'zzmmdm' and t2.bs = 'HD' and t2.yxx = 1
+           left join td_zdb t3 on t.mzdm = t3.dm and t3.dmlb = 'mzdm' and t3.bs = 'HD' and t3.yxx = 1
+           left join td_zdb t4 on t.sfdm = t4.dm and t4.dmlb = 'sfdm' and t4.bs = 'HD' and t4.yxx = 1
+           left join td_zdb t5 on t.kslxdm = t5.dm and t5.dmlb = 'kslxdm' and t5.bs = 'HD' and t5.yxx = 1
+           left join td_zdb t6 ON t.kslbdm = t6.dm and t6.dmlb = 'kslbdm' and t6.bs = 'HD' and t6.yxx = 1
+           left join td_zdb t7 ON t.bylbdm = t7.dm and t7.dmlb = 'bylbdm' and t7.bs = 'HD' and t7.yxx = 1
+           left join td_zdb t8 ON t.wyyzdm = t8.dm and t8.dmlb = 'wyyzdm' and t8.bs = 'HD' and t8.yxx = 1
+           left join td_zdb t9 ON t.dqdm = t9.dm and t9.dmlb = 'dqdm' and t9.bs = 'HD' and t9.yxx = 1
+           left join td_zdb t10 ON t.zjlxdm = t10.dm and t10.dmlb = 'zjlxdm' and t10.bs = 'HD' and t10.yxx = 1
+           left join td_zdb t11 ON t.hjlbdm = t11.dm and t11.dmlb = 'hjlbdm' and t11.bs = 'HD' and t11.yxx = 1
+           left join td_zdb t12 ON t.pcdm = t12.dm and t12.dmlb = 'pcdm' and t12.bs = 'HD' and t12.yxx = 1
+           left join td_zdb t13 ON t.kldm = t13.dm and t13.dmlb = 'kldm' and t13.bs = 'HD' and t13.yxx = 1
+           left join td_zdb t14 ON t.jhlbdm = t14.dm and t14.dmlb = 'jhlbdm' and t14.bs = 'HD' and t14.yxx = 1
+           left join t_zydm t15 ON t.lqzydm = t15.zydh and t15.year = '2021'
+    where t.ksh=#{ksh}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Sat Nov 12 18:44:53 CST 2022.
+    -->
+    delete from t_ksxx
+    where ksh = #{ksh,jdbcType=CHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.KsxxWithBLOBs" >
+    insert into t_ksxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        ksh,
+      </if>
+      <if test="zkzh != null" >
+        zkzh,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="xbdm != null" >
+        xbdm,
+      </if>
+      <if test="csrq != null" >
+        csrq,
+      </if>
+      <if test="zzmmdm != null" >
+        zzmmdm,
+      </if>
+      <if test="mzdm != null" >
+        mzdm,
+      </if>
+      <if test="kslxdm != null" >
+        kslxdm,
+      </if>
+      <if test="kslbdm != null" >
+        kslbdm,
+      </if>
+      <if test="bylbdm != null" >
+        bylbdm,
+      </if>
+      <if test="byxxdm != null" >
+        byxxdm,
+      </if>
+      <if test="byxxmc != null" >
+        byxxmc,
+      </if>
+      <if test="ysjzdm != null" >
+        ysjzdm,
+      </if>
+      <if test="wyyzdm != null" >
+        wyyzdm,
+      </if>
+      <if test="kstz != null" >
+        kstz,
+      </if>
+      <if test="bmdwdm != null" >
+        bmdwdm,
+      </if>
+      <if test="dqdm != null" >
+        dqdm,
+      </if>
+      <if test="zjlxdm != null" >
+        zjlxdm,
+      </if>
+      <if test="zjhm != null" >
+        zjhm,
+      </if>
+      <if test="xjh != null" >
+        xjh,
+      </if>
+      <if test="wyks != null" >
+        wyks,
+      </if>
+      <if test="wytl != null" >
+        wytl,
+      </if>
+      <if test="txdz != null" >
+        txdz,
+      </if>
+      <if test="yzbm != null" >
+        yzbm,
+      </if>
+      <if test="lxsj != null" >
+        lxsj,
+      </if>
+      <if test="lxdh != null" >
+        lxdh,
+      </if>
+      <if test="sjr != null" >
+        sjr,
+      </if>
+      <if test="kstc != null" >
+        kstc,
+      </if>
+      <if test="ksjlhcf != null" >
+        ksjlhcf,
+      </if>
+      <if test="sxpdkhyj != null" >
+        sxpdkhyj,
+      </if>
+      <if test="hjlbdm != null" >
+        hjlbdm,
+      </if>
+      <if test="hjdm != null" >
+        hjdm,
+      </if>
+      <if test="czlbdm != null" >
+        czlbdm,
+      </if>
+      <if test="xkkm != null" >
+        xkkm,
+      </if>
+      <if test="tddwdm != null" >
+        tddwdm,
+      </if>
+      <if test="pcdm != null" >
+        pcdm,
+      </if>
+      <if test="kldm != null" >
+        kldm,
+      </if>
+      <if test="jhxzdm != null" >
+        jhxzdm,
+      </if>
+      <if test="jhlbdm != null" >
+        jhlbdm,
+      </if>
+      <if test="tdlxdm != null" >
+        tdlxdm,
+      </if>
+      <if test="cj != null" >
+        cj,
+      </if>
+      <if test="tzcj != null" >
+        tzcj,
+      </if>
+      <if test="tdcj != null" >
+        tdcj,
+      </if>
+      <if test="zgf != null" >
+        zgf,
+      </if>
+      <if test="lqzydm != null" >
+        lqzydm,
+      </if>
+      <if test="lqsj != null" >
+        lqsj,
+      </if>
+      <if test="lqlxdm != null" >
+        lqlxdm,
+      </if>
+      <if test="tdyydm != null" >
+        tdyydm,
+      </if>
+      <if test="zyhg != null" >
+        zyhg,
+      </if>
+      <if test="tjhg != null" >
+        tjhg,
+      </if>
+      <if test="xkkmhg != null" >
+        xkkmhg,
+      </if>
+      <if test="lqxh != null" >
+        lqxh,
+      </if>
+      <if test="tddbh != null" >
+        tddbh,
+      </if>
+      <if test="bjdh != null" >
+        bjdh,
+      </if>
+      <if test="xh != null" >
+        xh,
+      </if>
+      <if test="kszp != null" >
+        kszp,
+      </if>
+      <if test="dazp1 != null" >
+        dazp1,
+      </if>
+      <if test="dazp2 != null" >
+        dazp2,
+      </if>
+      <if test="dazp3 != null" >
+        dazp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ksh != null" >
+        #{ksh,jdbcType=CHAR},
+      </if>
+      <if test="zkzh != null" >
+        #{zkzh,jdbcType=CHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xbdm != null" >
+        #{xbdm,jdbcType=CHAR},
+      </if>
+      <if test="csrq != null" >
+        #{csrq,jdbcType=DATE},
+      </if>
+      <if test="zzmmdm != null" >
+        #{zzmmdm,jdbcType=CHAR},
+      </if>
+      <if test="mzdm != null" >
+        #{mzdm,jdbcType=CHAR},
+      </if>
+      <if test="kslxdm != null" >
+        #{kslxdm,jdbcType=CHAR},
+      </if>
+      <if test="kslbdm != null" >
+        #{kslbdm,jdbcType=CHAR},
+      </if>
+      <if test="bylbdm != null" >
+        #{bylbdm,jdbcType=CHAR},
+      </if>
+      <if test="byxxdm != null" >
+        #{byxxdm,jdbcType=CHAR},
+      </if>
+      <if test="byxxmc != null" >
+        #{byxxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ysjzdm != null" >
+        #{ysjzdm,jdbcType=CHAR},
+      </if>
+      <if test="wyyzdm != null" >
+        #{wyyzdm,jdbcType=CHAR},
+      </if>
+      <if test="kstz != null" >
+        #{kstz,jdbcType=INTEGER},
+      </if>
+      <if test="bmdwdm != null" >
+        #{bmdwdm,jdbcType=CHAR},
+      </if>
+      <if test="dqdm != null" >
+        #{dqdm,jdbcType=CHAR},
+      </if>
+      <if test="zjlxdm != null" >
+        #{zjlxdm,jdbcType=CHAR},
+      </if>
+      <if test="zjhm != null" >
+        #{zjhm,jdbcType=CHAR},
+      </if>
+      <if test="xjh != null" >
+        #{xjh,jdbcType=CHAR},
+      </if>
+      <if test="wyks != null" >
+        #{wyks,jdbcType=INTEGER},
+      </if>
+      <if test="wytl != null" >
+        #{wytl,jdbcType=INTEGER},
+      </if>
+      <if test="txdz != null" >
+        #{txdz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        #{yzbm,jdbcType=CHAR},
+      </if>
+      <if test="lxsj != null" >
+        #{lxsj,jdbcType=CHAR},
+      </if>
+      <if test="lxdh != null" >
+        #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjr != null" >
+        #{sjr,jdbcType=VARCHAR},
+      </if>
+      <if test="kstc != null" >
+        #{kstc,jdbcType=VARCHAR},
+      </if>
+      <if test="ksjlhcf != null" >
+        #{ksjlhcf,jdbcType=VARCHAR},
+      </if>
+      <if test="sxpdkhyj != null" >
+        #{sxpdkhyj,jdbcType=VARCHAR},
+      </if>
+      <if test="hjlbdm != null" >
+        #{hjlbdm,jdbcType=CHAR},
+      </if>
+      <if test="hjdm != null" >
+        #{hjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="czlbdm != null" >
+        #{czlbdm,jdbcType=CHAR},
+      </if>
+      <if test="xkkm != null" >
+        #{xkkm,jdbcType=VARCHAR},
+      </if>
+      <if test="tddwdm != null" >
+        #{tddwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="pcdm != null" >
+        #{pcdm,jdbcType=INTEGER},
+      </if>
+      <if test="kldm != null" >
+        #{kldm,jdbcType=INTEGER},
+      </if>
+      <if test="jhxzdm != null" >
+        #{jhxzdm,jdbcType=INTEGER},
+      </if>
+      <if test="jhlbdm != null" >
+        #{jhlbdm,jdbcType=CHAR},
+      </if>
+      <if test="tdlxdm != null" >
+        #{tdlxdm,jdbcType=INTEGER},
+      </if>
+      <if test="cj != null" >
+        #{cj,jdbcType=DECIMAL},
+      </if>
+      <if test="tzcj != null" >
+        #{tzcj,jdbcType=DECIMAL},
+      </if>
+      <if test="tdcj != null" >
+        #{tdcj,jdbcType=DECIMAL},
+      </if>
+      <if test="zgf != null" >
+        #{zgf,jdbcType=DECIMAL},
+      </if>
+      <if test="lqzydm != null" >
+        #{lqzydm,jdbcType=CHAR},
+      </if>
+      <if test="lqsj != null" >
+        #{lqsj,jdbcType=DATE},
+      </if>
+      <if test="lqlxdm != null" >
+        #{lqlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="tdyydm != null" >
+        #{tdyydm,jdbcType=CHAR},
+      </if>
+      <if test="zyhg != null" >
+        #{zyhg,jdbcType=BIT},
+      </if>
+      <if test="tjhg != null" >
+        #{tjhg,jdbcType=BIT},
+      </if>
+      <if test="xkkmhg != null" >
+        #{xkkmhg,jdbcType=BIT},
+      </if>
+      <if test="lqxh != null" >
+        #{lqxh,jdbcType=DECIMAL},
+      </if>
+      <if test="tddbh != null" >
+        #{tddbh,jdbcType=DECIMAL},
+      </if>
+      <if test="bjdh != null" >
+        #{bjdh,jdbcType=CHAR},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=CHAR},
+      </if>
+      <if test="kszp != null" >
+        #{kszp,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp1 != null" >
+        #{dazp1,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp2 != null" >
+        #{dazp2,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp3 != null" >
+        #{dazp3,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caicaigroup.hnuzslq_system.entity.KsxxWithBLOBs" >
+    update t_ksxx
+    <set >
+      <if test="zkzh != null" >
+        zkzh = #{zkzh,jdbcType=CHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xbdm != null" >
+        xbdm = #{xbdm,jdbcType=CHAR},
+      </if>
+      <if test="csrq != null" >
+        csrq = #{csrq,jdbcType=DATE},
+      </if>
+      <if test="zzmmdm != null" >
+        zzmmdm = #{zzmmdm,jdbcType=CHAR},
+      </if>
+      <if test="mzdm != null" >
+        mzdm = #{mzdm,jdbcType=CHAR},
+      </if>
+      <if test="kslxdm != null" >
+        kslxdm = #{kslxdm,jdbcType=CHAR},
+      </if>
+      <if test="kslbdm != null" >
+        kslbdm = #{kslbdm,jdbcType=CHAR},
+      </if>
+      <if test="bylbdm != null" >
+        bylbdm = #{bylbdm,jdbcType=CHAR},
+      </if>
+      <if test="byxxdm != null" >
+        byxxdm = #{byxxdm,jdbcType=CHAR},
+      </if>
+      <if test="byxxmc != null" >
+        byxxmc = #{byxxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ysjzdm != null" >
+        ysjzdm = #{ysjzdm,jdbcType=CHAR},
+      </if>
+      <if test="wyyzdm != null" >
+        wyyzdm = #{wyyzdm,jdbcType=CHAR},
+      </if>
+      <if test="kstz != null" >
+        kstz = #{kstz,jdbcType=INTEGER},
+      </if>
+      <if test="bmdwdm != null" >
+        bmdwdm = #{bmdwdm,jdbcType=CHAR},
+      </if>
+      <if test="dqdm != null" >
+        dqdm = #{dqdm,jdbcType=CHAR},
+      </if>
+      <if test="zjlxdm != null" >
+        zjlxdm = #{zjlxdm,jdbcType=CHAR},
+      </if>
+      <if test="zjhm != null" >
+        zjhm = #{zjhm,jdbcType=CHAR},
+      </if>
+      <if test="xjh != null" >
+        xjh = #{xjh,jdbcType=CHAR},
+      </if>
+      <if test="wyks != null" >
+        wyks = #{wyks,jdbcType=INTEGER},
+      </if>
+      <if test="wytl != null" >
+        wytl = #{wytl,jdbcType=INTEGER},
+      </if>
+      <if test="txdz != null" >
+        txdz = #{txdz,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        yzbm = #{yzbm,jdbcType=CHAR},
+      </if>
+      <if test="lxsj != null" >
+        lxsj = #{lxsj,jdbcType=CHAR},
+      </if>
+      <if test="lxdh != null" >
+        lxdh = #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjr != null" >
+        sjr = #{sjr,jdbcType=VARCHAR},
+      </if>
+      <if test="kstc != null" >
+        kstc = #{kstc,jdbcType=VARCHAR},
+      </if>
+      <if test="ksjlhcf != null" >
+        ksjlhcf = #{ksjlhcf,jdbcType=VARCHAR},
+      </if>
+      <if test="sxpdkhyj != null" >
+        sxpdkhyj = #{sxpdkhyj,jdbcType=VARCHAR},
+      </if>
+      <if test="hjlbdm != null" >
+        hjlbdm = #{hjlbdm,jdbcType=CHAR},
+      </if>
+      <if test="hjdm != null" >
+        hjdm = #{hjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="czlbdm != null" >
+        czlbdm = #{czlbdm,jdbcType=CHAR},
+      </if>
+      <if test="xkkm != null" >
+        xkkm = #{xkkm,jdbcType=VARCHAR},
+      </if>
+      <if test="tddwdm != null" >
+        tddwdm = #{tddwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="pcdm != null" >
+        pcdm = #{pcdm,jdbcType=INTEGER},
+      </if>
+      <if test="kldm != null" >
+        kldm = #{kldm,jdbcType=INTEGER},
+      </if>
+      <if test="jhxzdm != null" >
+        jhxzdm = #{jhxzdm,jdbcType=INTEGER},
+      </if>
+      <if test="jhlbdm != null" >
+        jhlbdm = #{jhlbdm,jdbcType=CHAR},
+      </if>
+      <if test="tdlxdm != null" >
+        tdlxdm = #{tdlxdm,jdbcType=INTEGER},
+      </if>
+      <if test="cj != null" >
+        cj = #{cj,jdbcType=DECIMAL},
+      </if>
+      <if test="tzcj != null" >
+        tzcj = #{tzcj,jdbcType=DECIMAL},
+      </if>
+      <if test="tdcj != null" >
+        tdcj = #{tdcj,jdbcType=DECIMAL},
+      </if>
+      <if test="zgf != null" >
+        zgf = #{zgf,jdbcType=DECIMAL},
+      </if>
+      <if test="lqzydm != null" >
+        lqzydm = #{lqzydm,jdbcType=CHAR},
+      </if>
+      <if test="lqsj != null" >
+        lqsj = #{lqsj,jdbcType=DATE},
+      </if>
+      <if test="lqlxdm != null" >
+        lqlxdm = #{lqlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="tdyydm != null" >
+        tdyydm = #{tdyydm,jdbcType=CHAR},
+      </if>
+      <if test="zyhg != null" >
+        zyhg = #{zyhg,jdbcType=BIT},
+      </if>
+      <if test="tjhg != null" >
+        tjhg = #{tjhg,jdbcType=BIT},
+      </if>
+      <if test="xkkmhg != null" >
+        xkkmhg = #{xkkmhg,jdbcType=BIT},
+      </if>
+      <if test="lqxh != null" >
+        lqxh = #{lqxh,jdbcType=DECIMAL},
+      </if>
+      <if test="tddbh != null" >
+        tddbh = #{tddbh,jdbcType=DECIMAL},
+      </if>
+      <if test="bjdh != null" >
+        bjdh = #{bjdh,jdbcType=CHAR},
+      </if>
+      <if test="xh != null" >
+        xh = #{xh,jdbcType=CHAR},
+      </if>
+      <if test="kszp != null" >
+        kszp = #{kszp,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp1 != null" >
+        dazp1 = #{dazp1,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp2 != null" >
+        dazp2 = #{dazp2,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp3 != null" >
+        dazp3 = #{dazp3,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ksh = #{ksh,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.caicaigroup.hnuzslq_system.entity.KsxxWithBLOBs" >
+    update t_ksxx
+    set zkzh = #{zkzh,jdbcType=CHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      xbdm = #{xbdm,jdbcType=CHAR},
+      csrq = #{csrq,jdbcType=DATE},
+      zzmmdm = #{zzmmdm,jdbcType=CHAR},
+      mzdm = #{mzdm,jdbcType=CHAR},
+      kslxdm = #{kslxdm,jdbcType=CHAR},
+      kslbdm = #{kslbdm,jdbcType=CHAR},
+      bylbdm = #{bylbdm,jdbcType=CHAR},
+      byxxdm = #{byxxdm,jdbcType=CHAR},
+      byxxmc = #{byxxmc,jdbcType=VARCHAR},
+      ysjzdm = #{ysjzdm,jdbcType=CHAR},
+      wyyzdm = #{wyyzdm,jdbcType=CHAR},
+      kstz = #{kstz,jdbcType=INTEGER},
+      bmdwdm = #{bmdwdm,jdbcType=CHAR},
+      dqdm = #{dqdm,jdbcType=CHAR},
+      zjlxdm = #{zjlxdm,jdbcType=CHAR},
+      zjhm = #{zjhm,jdbcType=CHAR},
+      xjh = #{xjh,jdbcType=CHAR},
+      wyks = #{wyks,jdbcType=INTEGER},
+      wytl = #{wytl,jdbcType=INTEGER},
+      txdz = #{txdz,jdbcType=VARCHAR},
+      yzbm = #{yzbm,jdbcType=CHAR},
+      lxsj = #{lxsj,jdbcType=CHAR},
+      lxdh = #{lxdh,jdbcType=VARCHAR},
+      sjr = #{sjr,jdbcType=VARCHAR},
+      kstc = #{kstc,jdbcType=VARCHAR},
+      ksjlhcf = #{ksjlhcf,jdbcType=VARCHAR},
+      sxpdkhyj = #{sxpdkhyj,jdbcType=VARCHAR},
+      hjlbdm = #{hjlbdm,jdbcType=CHAR},
+      hjdm = #{hjdm,jdbcType=VARCHAR},
+      czlbdm = #{czlbdm,jdbcType=CHAR},
+      xkkm = #{xkkm,jdbcType=VARCHAR},
+      tddwdm = #{tddwdm,jdbcType=VARCHAR},
+      pcdm = #{pcdm,jdbcType=INTEGER},
+      kldm = #{kldm,jdbcType=INTEGER},
+      jhxzdm = #{jhxzdm,jdbcType=INTEGER},
+      jhlbdm = #{jhlbdm,jdbcType=CHAR},
+      tdlxdm = #{tdlxdm,jdbcType=INTEGER},
+      cj = #{cj,jdbcType=DECIMAL},
+      tzcj = #{tzcj,jdbcType=DECIMAL},
+      tdcj = #{tdcj,jdbcType=DECIMAL},
+      zgf = #{zgf,jdbcType=DECIMAL},
+      lqzydm = #{lqzydm,jdbcType=CHAR},
+      lqsj = #{lqsj,jdbcType=DATE},
+      lqlxdm = #{lqlxdm,jdbcType=VARCHAR},
+      tdyydm = #{tdyydm,jdbcType=CHAR},
+      zyhg = #{zyhg,jdbcType=BIT},
+      tjhg = #{tjhg,jdbcType=BIT},
+      xkkmhg = #{xkkmhg,jdbcType=BIT},
+      lqxh = #{lqxh,jdbcType=DECIMAL},
+      tddbh = #{tddbh,jdbcType=DECIMAL},
+      bjdh = #{bjdh,jdbcType=CHAR},
+      xh = #{xh,jdbcType=CHAR},
+      kszp = #{kszp,jdbcType=LONGVARBINARY},
+      dazp1 = #{dazp1,jdbcType=LONGVARBINARY},
+      dazp2 = #{dazp2,jdbcType=LONGVARBINARY},
+      dazp3 = #{dazp3,jdbcType=LONGVARBINARY}
+    where ksh = #{ksh,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caicaigroup.hnuzslq_system.entity.Ksxx" >
+    update t_ksxx
+    set zkzh = #{zkzh,jdbcType=CHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      xbdm = #{xbdm,jdbcType=CHAR},
+      csrq = #{csrq,jdbcType=DATE},
+      zzmmdm = #{zzmmdm,jdbcType=CHAR},
+      mzdm = #{mzdm,jdbcType=CHAR},
+      kslxdm = #{kslxdm,jdbcType=CHAR},
+      kslbdm = #{kslbdm,jdbcType=CHAR},
+      bylbdm = #{bylbdm,jdbcType=CHAR},
+      byxxdm = #{byxxdm,jdbcType=CHAR},
+      byxxmc = #{byxxmc,jdbcType=VARCHAR},
+      ysjzdm = #{ysjzdm,jdbcType=CHAR},
+      wyyzdm = #{wyyzdm,jdbcType=CHAR},
+      kstz = #{kstz,jdbcType=INTEGER},
+      bmdwdm = #{bmdwdm,jdbcType=CHAR},
+      dqdm = #{dqdm,jdbcType=CHAR},
+      zjlxdm = #{zjlxdm,jdbcType=CHAR},
+      zjhm = #{zjhm,jdbcType=CHAR},
+      xjh = #{xjh,jdbcType=CHAR},
+      wyks = #{wyks,jdbcType=INTEGER},
+      wytl = #{wytl,jdbcType=INTEGER},
+      txdz = #{txdz,jdbcType=VARCHAR},
+      yzbm = #{yzbm,jdbcType=CHAR},
+      lxsj = #{lxsj,jdbcType=CHAR},
+      lxdh = #{lxdh,jdbcType=VARCHAR},
+      sjr = #{sjr,jdbcType=VARCHAR},
+      kstc = #{kstc,jdbcType=VARCHAR},
+      ksjlhcf = #{ksjlhcf,jdbcType=VARCHAR},
+      sxpdkhyj = #{sxpdkhyj,jdbcType=VARCHAR},
+      hjlbdm = #{hjlbdm,jdbcType=CHAR},
+      hjdm = #{hjdm,jdbcType=VARCHAR},
+      czlbdm = #{czlbdm,jdbcType=CHAR},
+      xkkm = #{xkkm,jdbcType=VARCHAR},
+      tddwdm = #{tddwdm,jdbcType=VARCHAR},
+      pcdm = #{pcdm,jdbcType=INTEGER},
+      kldm = #{kldm,jdbcType=INTEGER},
+      jhxzdm = #{jhxzdm,jdbcType=INTEGER},
+      jhlbdm = #{jhlbdm,jdbcType=CHAR},
+      tdlxdm = #{tdlxdm,jdbcType=INTEGER},
+      cj = #{cj,jdbcType=DECIMAL},
+      tzcj = #{tzcj,jdbcType=DECIMAL},
+      tdcj = #{tdcj,jdbcType=DECIMAL},
+      zgf = #{zgf,jdbcType=DECIMAL},
+      lqzydm = #{lqzydm,jdbcType=CHAR},
+      lqsj = #{lqsj,jdbcType=DATE},
+      lqlxdm = #{lqlxdm,jdbcType=VARCHAR},
+      tdyydm = #{tdyydm,jdbcType=CHAR},
+      zyhg = #{zyhg,jdbcType=BIT},
+      tjhg = #{tjhg,jdbcType=BIT},
+      xkkmhg = #{xkkmhg,jdbcType=BIT},
+      lqxh = #{lqxh,jdbcType=DECIMAL},
+      tddbh = #{tddbh,jdbcType=DECIMAL},
+      bjdh = #{bjdh,jdbcType=CHAR},
+      xh = #{xh,jdbcType=CHAR}
+    where ksh = #{ksh,jdbcType=CHAR}
+  </update>
+  <update id="updateBjdhAndXh">
+    update t_ksxx set bjdh = #{bjdh}, xh = #{xh}
+    where ksh = #{ksh}
+  </update>
+  <update id="updateKsxxZp">
+    update t_ksxx
+    <set>
+      <if test="kszp != null" >
+        kszp = #{kszp,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp1 != null" >
+        dazp1 = #{dazp1,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp2 != null" >
+        dazp2 = #{dazp2,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="dazp3 != null" >
+        dazp3 = #{dazp3,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ksh = #{ksh,jdbcType=CHAR}
+  </update>
+  <update id="updateSfdm">
+    update t_ksxx
+  </update>
+
+</mapper>

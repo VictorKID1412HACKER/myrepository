@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.ZydmMapper">
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Zydm">
+    <id column="t_zydm_id" jdbcType="INTEGER" property="tZydmId" />
+    <result column="zydh" jdbcType="CHAR" property="zydh" />
+    <result column="zymc" jdbcType="VARCHAR" property="zymc" />
+    <result column="zydm" jdbcType="CHAR" property="zydm" />
+    <result column="yxdm" jdbcType="CHAR" property="yxdm" />
+    <result column="year" jdbcType="DATE" property="year" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    t_zydm_id, zydh, zymc, zydm, yxdm, year
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_zydm
+    where t_zydm_id = #{tZydmId,jdbcType=INTEGER}
+  </select>
+  <select id="selectZymcByZmZydh" resultType="java.lang.String">
+    select distinct zymc
+    from t_zydm zy
+    left join td_zdb zd
+    on zy.zydh = zd.dmmc
+    and zd.dmlb = 'zydhdm'
+    where zd.dm = #{zydh} and year = #{year}
+  </select>
+  <select id="selectKeyAndValByYx" resultType="com.caicaigroup.hnuzslq_system.entity.vo.ZdKeyAndVal" parameterType="map">
+    select zydh as dm, zymc as dmmc
+    from t_zydm, td_zdb
+    where t_zydm.yxdm = td_zdb.dm
+            and td_zdb.dmlb = 'yxdm'
+            and td_zdb.dmmc = #{yx}
+            and year = #{year}
+  </select>
+  <select id="selectYxmcByZy" resultType="java.lang.String" parameterType="map">
+    select td_zdb.dmmc
+    from t_zydm, td_zdb
+    where t_zydm.yxdm = td_zdb.dm
+      and td_zdb.dmlb = 'yxdm'
+      and t_zydm.zydh = #{zydh}
+      and year = #{year}
+  </select>
+  <select id="selectZymcByZy" resultType="java.lang.String"></select>
+  <select id="selectZydhByZymcAndYear" resultType="java.lang.String">
+    select zydh
+    from t_zydm
+    where zymc = #{zymc}
+          and year = #{year}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_zydm
+    where t_zydm_id = #{tZydmId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Zydm">
+    insert into t_zydm (t_zydm_id, zydh, zymc, 
+      zydm, yxdm, year)
+    values (#{tZydmId,jdbcType=INTEGER}, #{zydh,jdbcType=CHAR}, #{zymc,jdbcType=VARCHAR}, 
+      #{zydm,jdbcType=CHAR}, #{yxdm,jdbcType=CHAR}, #{year,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zydm">
+    insert into t_zydm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tZydmId != null">
+        t_zydm_id,
+      </if>
+      <if test="zydh != null">
+        zydh,
+      </if>
+      <if test="zymc != null">
+        zymc,
+      </if>
+      <if test="zydm != null">
+        zydm,
+      </if>
+      <if test="yxdm != null">
+        yxdm,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tZydmId != null">
+        #{tZydmId,jdbcType=INTEGER},
+      </if>
+      <if test="zydh != null">
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="zymc != null">
+        #{zymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zydm != null">
+        #{zydm,jdbcType=CHAR},
+      </if>
+      <if test="yxdm != null">
+        #{yxdm,jdbcType=CHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zydm">
+    update t_zydm
+    <set>
+      <if test="zydh != null">
+        zydh = #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="zymc != null">
+        zymc = #{zymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zydm != null">
+        zydm = #{zydm,jdbcType=CHAR},
+      </if>
+      <if test="yxdm != null">
+        yxdm = #{yxdm,jdbcType=CHAR},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=DATE},
+      </if>
+    </set>
+    where t_zydm_id = #{tZydmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caicaigroup.hnuzslq_system.entity.Zydm">
+    update t_zydm
+    set zydh = #{zydh,jdbcType=CHAR},
+      zymc = #{zymc,jdbcType=VARCHAR},
+      zydm = #{zydm,jdbcType=CHAR},
+      yxdm = #{yxdm,jdbcType=CHAR},
+      year = #{year,jdbcType=DATE}
+    where t_zydm_id = #{tZydmId,jdbcType=INTEGER}
+  </update>
+</mapper>

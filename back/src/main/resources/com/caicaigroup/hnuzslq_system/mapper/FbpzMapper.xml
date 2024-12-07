@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.FbpzMapper" >
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Fbpz" >
+    <id column="t_fbpz_id" property="tFbpzId" jdbcType="INTEGER" />
+    <result column="zydh" property="zydh" jdbcType="CHAR" />
+    <result column="yxdm" property="yxdm" jdbcType="CHAR" />
+    <result column="bjsl" property="bjsl" jdbcType="INTEGER" />
+    <result column="bjdmqz" property="bjdmqz" jdbcType="CHAR" />
+    <result column="bjmcqz" property="bjmcqz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    t_fbpz_id, zydh, yxdm, bjsl, bjdmqz, bjmcqz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_fbpz
+    where t_fbpz_id = #{tFbpzId,jdbcType=INTEGER}
+  </select>
+    <select id="selectFbpzDetails" resultType="com.caicaigroup.hnuzslq_system.entity.vo.FbpzDetail">
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_fbpz
+    where t_fbpz_id = #{tFbpzId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Fbpz" >
+    insert into t_fbpz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tFbpzId != null" >
+        t_fbpz_id,
+      </if>
+      <if test="zydh != null" >
+        zydh,
+      </if>
+      <if test="yxdm != null" >
+        yxdm,
+      </if>
+      <if test="bjsl != null" >
+        bjsl,
+      </if>
+      <if test="bjdmqz != null" >
+        bjdmqz,
+      </if>
+      <if test="bjmcqz != null" >
+        bjmcqz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tFbpzId != null" >
+        #{tFbpzId,jdbcType=INTEGER},
+      </if>
+      <if test="zydh != null" >
+        #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="yxdm != null" >
+        #{yxdm,jdbcType=CHAR},
+      </if>
+      <if test="bjsl != null" >
+        #{bjsl,jdbcType=INTEGER},
+      </if>
+      <if test="bjdmqz != null" >
+        #{bjdmqz,jdbcType=CHAR},
+      </if>
+      <if test="bjmcqz != null" >
+        #{bjmcqz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Fbpz" >
+    update t_fbpz
+    <set >
+      <if test="zydh != null" >
+        zydh = #{zydh,jdbcType=CHAR},
+      </if>
+      <if test="yxdm != null" >
+        yxdm = #{yxdm,jdbcType=CHAR},
+      </if>
+      <if test="bjsl != null" >
+        bjsl = #{bjsl,jdbcType=INTEGER},
+      </if>
+      <if test="bjdmqz != null" >
+        bjdmqz = #{bjdmqz,jdbcType=CHAR},
+      </if>
+      <if test="bjmcqz != null" >
+        bjmcqz = #{bjmcqz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where t_fbpz_id = #{tFbpzId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caicaigroup.hnuzslq_system.entity.Fbpz" >
+    update t_fbpz
+    set zydh = #{zydh,jdbcType=CHAR},
+      yxdm = #{yxdm,jdbcType=CHAR},
+      bjsl = #{bjsl,jdbcType=INTEGER},
+      bjdmqz = #{bjdmqz,jdbcType=CHAR},
+      bjmcqz = #{bjmcqz,jdbcType=VARCHAR}
+    where t_fbpz_id = #{tFbpzId,jdbcType=INTEGER}
+  </update>
+</mapper>

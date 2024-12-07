@@ -1,0 +1,68 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hnuzslq_system?serverTimeZone=GMT%2b8
+    username: HNUZSLQ_System
+    password: Caicai2003
+    database: hnuzslq_system
+    mysqlIp: localhost
+    mysqlPort: 3306
+#    124.71.221.35
+#  thymeleaf:
+#    cache: false #热部署模块
+#  devtools:
+#    restart:
+#      enabled: true #设置开启热部署
+#      additional-paths: src/main/java #设置修改文件后需要重启的目录
+#  freemarker:
+#    cache: false #页面不加载缓存，修改即时生效
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com/caicaigroup/hnuzslq_system/mapper/*.xml
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com/caicaigroup/hnuzslq_system/mapper/*.xml
+
+#本地测试模块
+file:
+  upload:
+    url:
+     dbf: D:/data/temp/dbf
+     csv: D:/data/temp/csv
+     excel: D:/data/temp/excel
+     jpg: D:/data/temp/jpg
+     temp: D:/data/temp
+     py_script: D:/data/py_script/test.py
+
+  download:
+    url:
+     oldDatabases: D:/data/oldDatabase
+
+#服务器测试模块
+#file:
+#  upload:
+#    url:
+#      dbf: /home/webtemp/dbf
+#      csv: /home/webtemp/csv
+#      excel: /home/webtemp/excel
+#      jpg: /home/webtemp/jpg
+#      data: /home/webtemp
+#
+#  download:
+#    url:
+#      oldDatabases: /home/databases
+#debug: true #热部署模块
+
+
+

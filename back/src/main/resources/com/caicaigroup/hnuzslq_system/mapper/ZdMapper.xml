@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caicaigroup.hnuzslq_system.mapper.ZdMapper">
+  <resultMap id="BaseResultMap" type="com.caicaigroup.hnuzslq_system.entity.Zd">
+    <id column="td_zdb_id" jdbcType="INTEGER" property="tdZdbId" />
+    <result column="dmlb" jdbcType="VARCHAR" property="dmlb" />
+    <result column="dm" jdbcType="CHAR" property="dm" />
+    <result column="dmmc" jdbcType="VARCHAR" property="dmmc" />
+    <result column="yxx" jdbcType="BIT" property="yxx" />
+    <result column="sxsj" jdbcType="DATE" property="sxsj" />
+    <result column="zzsj" jdbcType="DATE" property="zzsj" />
+    <result column="bs" jdbcType="CHAR" property="bs" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    td_zdb_id, dmlb, dm, dmmc, yxx, sxsj, zzsj, bs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_zdb
+    where td_zdb_id = #{tdZdbId,jdbcType=INTEGER}
+  </select>
+  <select id="getSfdmBySf" resultType="java.lang.String">
+    select dm
+    from td_zdb
+    where dmlb = 'sfdm'
+    and dmmc = #{sf}
+  </select>
+  <select id="selectDmByDmmcAndLbBs" resultType="java.lang.String">
+    select dm
+    from td_zdb
+    where dmmc = #{dmmc} and dmlb = #{dmlb}
+    and yxx = "1" and bs = #{bs}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_zdb
+    where td_zdb_id = #{tdZdbId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.caicaigroup.hnuzslq_system.entity.Zd">
+    insert into td_zdb (td_zdb_id, dmlb, dm, 
+      dmmc, yxx, sxsj, zzsj, 
+      bs)
+    values (#{tdZdbId,jdbcType=INTEGER}, #{dmlb,jdbcType=VARCHAR}, #{dm,jdbcType=CHAR}, 
+      #{dmmc,jdbcType=VARCHAR}, #{yxx,jdbcType=BIT}, #{sxsj,jdbcType=DATE}, #{zzsj,jdbcType=DATE}, 
+      #{bs,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zd">
+    insert into td_zdb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tdZdbId != null">
+        td_zdb_id,
+      </if>
+      <if test="dmlb != null">
+        dmlb,
+      </if>
+      <if test="dm != null">
+        dm,
+      </if>
+      <if test="dmmc != null">
+        dmmc,
+      </if>
+      <if test="yxx != null">
+        yxx,
+      </if>
+      <if test="sxsj != null">
+        sxsj,
+      </if>
+      <if test="zzsj != null">
+        zzsj,
+      </if>
+      <if test="bs != null">
+        bs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tdZdbId != null">
+        #{tdZdbId,jdbcType=INTEGER},
+      </if>
+      <if test="dmlb != null">
+        #{dmlb,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null">
+        #{dm,jdbcType=CHAR},
+      </if>
+      <if test="dmmc != null">
+        #{dmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="yxx != null">
+        #{yxx,jdbcType=BIT},
+      </if>
+      <if test="sxsj != null">
+        #{sxsj,jdbcType=DATE},
+      </if>
+      <if test="zzsj != null">
+        #{zzsj,jdbcType=DATE},
+      </if>
+      <if test="bs != null">
+        #{bs,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caicaigroup.hnuzslq_system.entity.Zd">
+    update td_zdb
+    <set>
+      <if test="dmlb != null">
+        dmlb = #{dmlb,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null">
+        dm = #{dm,jdbcType=CHAR},
+      </if>
+      <if test="dmmc != null">
+        dmmc = #{dmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="yxx != null">
+        yxx = #{yxx,jdbcType=BIT},
+      </if>
+      <if test="sxsj != null">
+        sxsj = #{sxsj,jdbcType=DATE},
+      </if>
+      <if test="zzsj != null">
+        zzsj = #{zzsj,jdbcType=DATE},
+      </if>
+      <if test="bs != null">
+        bs = #{bs,jdbcType=CHAR},
+      </if>
+    </set>
+    where td_zdb_id = #{tdZdbId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caicaigroup.hnuzslq_system.entity.Zd">
+    update td_zdb
+    set dmlb = #{dmlb,jdbcType=VARCHAR},
+      dm = #{dm,jdbcType=CHAR},
+      dmmc = #{dmmc,jdbcType=VARCHAR},
+      yxx = #{yxx,jdbcType=BIT},
+      sxsj = #{sxsj,jdbcType=DATE},
+      zzsj = #{zzsj,jdbcType=DATE},
+      bs = #{bs,jdbcType=CHAR}
+    where td_zdb_id = #{tdZdbId,jdbcType=INTEGER}
+  </update>
+</mapper>
